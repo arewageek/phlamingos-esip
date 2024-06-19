@@ -5,12 +5,12 @@ pragma solidity ^0.8.24;
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import { IPhlamingos } from "./interface/IPhlamingos.sol";
 
-contract Phlamingos is IPhlamingos, ReentrancyGuard{
+abstract contract Phlamingos is IPhlamingos, ReentrancyGuard{
     uint public constant MAX_MINT = 10000;
     uint public constant AUCTION_RESERVATION = 2500;
     uint public totalSupply;
 
-    mapping(address => Team[]) public team;
+    mapping(address => Team) public team;
     Ethscription[] public ethscription;
 
     mapping(uint => bytes32) private notMinted;
@@ -35,15 +35,18 @@ contract Phlamingos is IPhlamingos, ReentrancyGuard{
 
     constructor(){}
 
-    function mintEthscription (address to, uint amount) external nonReentrant() returns (bytes32[]){
-        bytes32[] memory tokens;
+    function mintEthscription (address to) external nonReentrant() returns (bytes32){
+        bytes32 token;
 
-        for(uint i = totalSupply; i < amount; i++){
-            tokens.push(notMinted[i]);
-            minted.push(notMinted[i]);
-        }
+        totalSupply ++;
+        
+        token = notMinted[totalSupply];
+        
+        minted[totalSupply] = token;
 
-        return bytes32[];
+        emit Ethscription_MintToken(to, totalSupply);
+
+        return token;
     }
 
     function mintedTokensCount () external view returns (uint){

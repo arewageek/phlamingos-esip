@@ -24,8 +24,8 @@ interface IPhlamingos {
 
 // events
 
-    event Ethscription_MintToken(address to, uint tokenIdentifier[]);
-    event Ethscription_TransferToken(address to, uint tokenIdentifier[]);
+    event Ethscription_MintToken(address to, uint tokenIdentifiees);
+    event Ethscription_TransferToken(address to, uint tokenIdentifier);
     event Ethscription_MintAborted(uint identifier);
 
 
@@ -39,4 +39,6 @@ interface IPhlamingos {
     function generateTokenIdentifier (uint amount) external returns (bytes32);
     function revertMint(bytes32 tokenIdentifier) external;
 
+
+    // if there's still need I may have to return to the raffle contract interface
 }
