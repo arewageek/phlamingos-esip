@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local"
 import "./globals.css";
 import Nav from "@/components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
+const retroComputer = localFont({
+  src: '../assets/fonts/retro_computer/retro_computer_personal_use.ttf',
+  variable: '--font-retro-computer'
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <body className={inter.className}>
         <Nav />
         {children}
       </body>
+=======
+      <body className={retroComputer.className}>{children}</body>
+>>>>>>> chain
     </html>
   );
 }
