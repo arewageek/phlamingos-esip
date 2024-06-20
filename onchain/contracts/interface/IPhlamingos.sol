@@ -12,36 +12,33 @@ interface IPhlamingos {
         address wallet;
         Role role;
         bool isActive;
-    };
+    }
 
     // ethscription token information
     struct Ethscription {
         uint tokenIndex;
-        bytes64 tokenIdentifier;
         bool minted;
-    };
+        bytes32 tokenIdentifier;
+    }
 
 
 // events
 
-    event MintEthscription(address to, uint tokenIdentifier);
-    event TransferEthscription(address to, uint tokenIdentifier);
+    event Ethscription_MintToken(address to, uint tokenIdentifiees);
+    event Ethscription_TransferToken(address to, uint tokenIdentifier);
+    event Ethscription_MintAborted(uint identifier);
 
 
 
-    function mintEthscription (address to, uint amount) external returns (bytes64);
-    function verifyIdentifier(bytes64 identifier) external returns (boolean);
-}
+    function mintEthscription (address to, uint amount) external;
+    function mintedTokensCount () external view returns (uint);
+    function unmintedTokensCount () external view returns (uint);
+
+    function verifyIdentifier(bytes32 identifier) external returns (bool);
+    function transferToken (address to, bytes32 identifier) external;
+    function generateTokenIdentifier (uint amount) external returns (bytes32);
+    function revertMint(bytes32 tokenIdentifier) external;
 
 
-// modifiers
-
-modifier TeamOnly() {
-    require(team[msg.sender].isActive, "Only active team wallet is authorized");
-    _;
-}
-
-modifier BotWalletOnly() {
-    require(team[msg.sender].role == Role.BOT, "Address is not authorized");
-    _;
+    // if there's still need I may have to return to the raffle contract interface
 }

@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local"
 import "./globals.css";
-import Nav from "@/components/Nav";
+import Nav from "@/components/Layout/Nav";
+import AppProvider from "@/components/providers/AppProvider";
+import Footer from "@/components/Layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+const retroComputer = localFont({
+  src: '../assets/fonts/retro_computer/retro_computer_personal_use.ttf',
+  variable: '--font-retro-computer'
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Nav />
-        {children}
+      <body className={`${retroComputer.className} text-sm bg-secondary-200 dark:bg-secondary-100`}>
+        <AppProvider>
+          <Nav />
+          {children}
+          <Footer />
+        </AppProvider>
       </body>
-    </html>
+    </html >
   );
 }
