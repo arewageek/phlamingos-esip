@@ -14,14 +14,16 @@ const config: Config = {
         },
         secondary: {
           100: "#ff04b4",
+          200: "#000",
         },
         accent: {
-          100: "#02ffc4"
-        }
+          100: "rgb(2, 255, 100)",
+        },
       },
     },
   },
   plugins: [],
+  darkMode: "selector",
 };
 
 export default config;

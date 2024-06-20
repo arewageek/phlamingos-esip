@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local"
 import "./globals.css";
-import Nav from "@/components/Nav";
+import Nav from "@/components/Layout/Nav";
+import AppProvider from "@/components/providers/AppProvider";
+import Footer from "@/components/Layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const retroComputer = localFont({
@@ -22,14 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
-      <body className={inter.className}>
-        <Nav />
-        {children}
+      <body className={`${retroComputer.className} text-sm bg-secondary-200 dark:bg-secondary-100`}>
+        <AppProvider>
+          <Nav />
+          {children}
+          <Footer />
+        </AppProvider>
       </body>
-=======
-      <body className={retroComputer.className}>{children}</body>
->>>>>>> chain
-    </html>
+    </html >
   );
 }
