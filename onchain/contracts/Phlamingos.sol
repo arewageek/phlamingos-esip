@@ -11,9 +11,9 @@ abstract contract Phlamingos is IPhlamingos, ReentrancyGuard{
     uint public totalSupply;
 
     mapping(address => Team) public team;
-    Ethscription[] public ethscription;
+    // Ethscription[] public ethscription;
 
-    mapping(uint => bytes32) private notMinted;
+    mapping(uint => Ethscription) private allTokens;
     mapping(uint => bytes32) public minted;
 
     // modifiers
@@ -40,7 +40,7 @@ abstract contract Phlamingos is IPhlamingos, ReentrancyGuard{
 
         totalSupply ++;
         
-        token = notMinted[totalSupply];
+        token = allTokens[totalSupply];
         
         minted[totalSupply] = token;
 
@@ -49,11 +49,39 @@ abstract contract Phlamingos is IPhlamingos, ReentrancyGuard{
         return token;
     }
 
-    function mintedTokensCount () external view returns (uint){
+    function mintedTokensCount () public view returns (uint){
         return totalSupply;
     }
 
-    function unmintedTokensCount () external view returns (uint){
+    function unmintedTokensCount () public view returns (uint){
         return MAX_MINT - totalSupply;
     }
+
+    function verifyIdentifier (bytes32 data, bool minted) external view returns (bool){
+        uint limit = minted ? mintedTokensCount() : unmintedTokensCount();
+
+        for(uint i; i <= limit; i++){
+            if(notMinted[i] == data){
+                return true;
+            }
+        }
+    }
+
+    function transferToken (address to, uint identifier) external BotWalletOnly(){
+        if(allTokens[identifier].minted){
+            emit Ethscription_TransferToken(to, identifier);            
+        }
+        else{
+            minted[totalSupply + 1] = allTokens[identifier].tokenData;
+            allTokens[identifier].minted = true;
+        }
+    }
+
+    // function generateTokenIdentifier(uint amount) externa returns ()
+
+    // function revertMint(bytes32 tokenIdentifier) external{
+        
+    // }
+
+
 }
