@@ -18,7 +18,7 @@ interface IPhlamingos {
     struct Ethscription {
         uint tokenIndex;
         bool minted;
-        bytes32 tokenIdentifier;
+        bytes32 tokenData;
     }
 
 
@@ -33,11 +33,11 @@ interface IPhlamingos {
     function mintEthscription (address to, uint amount) external;
     function mintedTokensCount () external view returns (uint);
     function unmintedTokensCount () external view returns (uint);
+    function verifyIdentifier(bytes32 data, bool minted) external view returns (bool);
+    function transferToken (address to, uint identifier) external view;
 
-    function verifyIdentifier(bytes32 identifier) external returns (bool);
-    function transferToken (address to, bytes32 identifier) external;
-    function generateTokenIdentifier (uint amount) external returns (bytes32);
-    function revertMint(bytes32 tokenIdentifier) external;
+    // function generateTokenIdentifier (uint amount) external returns (bytes32);
+    // function revertMint(bytes32 tokenIdentifier) external;
 
 
     // if there's still need I may have to return to the raffle contract interface

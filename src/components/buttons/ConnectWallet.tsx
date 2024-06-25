@@ -8,7 +8,7 @@ import { injected } from 'wagmi/connectors'
 const ConnectWallet = () => {
 
     const account = useAccount({ config: config })
-    const { connectAsync } = useConnect()
+    const { connectAsync, isError, error } = useConnect()
 
     const handleConnect = async () => {
         try {
@@ -21,10 +21,10 @@ const ConnectWallet = () => {
         }
     }
 
+
     return (
         <button onClick={handleConnect} className="uppercase font-bold items-center justify-center bg-secondary-200 dark:bg-secondary-100 px-4 py-2 text-secondary-100 dark:text-primary-100 text-xs">
             {account.status == "disconnected" ? "CONNECT" : account.status}
-
         </button>
 
 
