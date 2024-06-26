@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${retroComputer.className} text-sm bg-secondary-200 dark:bg-secondary-100`}>
+      <body className={`${retroComputer.className} text-sm p-0`}>
         <AppProvider>
           <Nav />
           {children}

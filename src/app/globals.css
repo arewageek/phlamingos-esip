@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .glitch-btn {
   box-shadow: -5px 4px 1px theme("colors.secondary.100");
 }
@@ -11,6 +10,30 @@
   box-shadow: -5px 4px 1px #000c;
 }
 
-body{
-  background: black;
+.image-pixelated {
+  image-rendering: pixelated;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.tokens-grid-22 {
+  grid-template-columns: repeat(22, 4.54545454545%);
+}
+
+.tokens-grid-10 {
+  grid-template-columns: repeat(10, 10%);
+}
+
+@layer utilities {
+  body {
+    @apply bg-secondary-100 dark:bg-black overflow-x-hidden;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-base {
+    @apply flex justify-end flex-col items-center;
+  }
 }

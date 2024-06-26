@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useTheme } from "next-themes";
 import CollectionsDropdown from "./CollectionsDropdown";
 import ConnectWallet from "../buttons/ConnectWallet";
+import Link from "next/link";
+import SearchInput from "./SearchInput";
 
 
 const Nav = () => {
@@ -19,18 +21,15 @@ const Nav = () => {
   }
 
   return (
-    <div className="w-full flex flex-col bg-primary-100 text-black ">
+    <div className="w-full flex flex-col bg-primary-100 text-black fixed top-0 left-0 z-50">
 
       <div className="px-7 py-5 flex items-center justify-between">
-        <div className="brand font-bold  block text-secondary-200 dark:text-secondary-100">
+        <Link href="/" className="brand font-bold  block text-secondary-200 dark:text-secondary-100">
           Phlamingos
-        </div>
+        </Link>
 
         <div className="w-full lg:w-1/3 lg:flex gap-5 hidden">
-          <div className="w-full flex">
-            <input type="text" placeholder="SEARCH 0X, ENS, OR ENSCRIPTION ID" className="py-3 px-5 w-full bg-black/10" />
-            <button className="text-primary-100 dark:text-primary-200 bg-secondary-200 dark:bg-secondary-100 px-6 py-2 font-bold border-transparent">GO</button>
-          </div>
+          <SearchInput />
 
           <CollectionsDropdown device="lg" />
         </div>
