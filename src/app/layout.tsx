@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local"
 import "./globals.css";
-import Nav from "@/components/Layout/Nav";
+import Nav from "@/components/layout/Nav";
 import AppProvider from "@/components/providers/AppProvider";
-import Footer from "@/components/Layout/Footer";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const retroComputer = localFont({

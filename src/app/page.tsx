@@ -1,4 +1,4 @@
-import HeroSection from "@/components/Layout/HeroSection";
+import HeroSection from "@/components/layout/HeroSection";
 import RecentActivities from "@/components/recentActivities/RecentActivities";
 import AllTokens from "@/components/tokensGrid/AllTokens";
 import ForSale from "@/components/tokensGrid/ForSale";

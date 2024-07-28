@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
 import CollectionsDropdown from "./CollectionsDropdown";
-import ConnectWallet from "../buttons/ConnectWallet";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import ConnectWallet from "../auth/ConnectWallet";
 
 
 const Nav = () => {

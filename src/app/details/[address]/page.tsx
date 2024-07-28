@@ -1,4 +1,4 @@
-import HeroSection from '@/components/Layout/HeroSection'
+import HeroSection from '@/components/layout/HeroSection'
 import TransactionHistoryTable from '@/components/tokenHistory/TransactionHistoryTable'
 import Link from 'next/link'
 import React from 'react'
