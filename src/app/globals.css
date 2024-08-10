@@ -36,4 +36,8 @@
   .flex-base {
     @apply flex justify-end flex-col items-center;
   }
+
+  /* button[data-testid="rk-connect-button"] {
+    background-color: red!;
+  } */
 }

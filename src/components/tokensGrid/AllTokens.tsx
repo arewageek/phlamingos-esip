@@ -14,7 +14,7 @@ const AllTokens = () => {
                 </p>
             </div>
             <div className='grid bg-primary-100 p-2 xs:tokens-grid-10 tokens-grid-22'>
-                {Array(110).fill(<EachTokenBox />)}
+                {Array(110).fill(<EachTokenBox key={Math.random() * 110} />)}
             </div>
         </div>
     )
